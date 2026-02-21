@@ -18,7 +18,9 @@ export class Rectangle implements Figure {
 
   constructor(color: Color, width: number, height: number) {
     if (width <= 0 || height <= 0) {
-      throw new Error('your error message');
+      throw new Error(
+        'Rectangle error: width and height must be positive numbers.',
+      );
     }
 
     this.color = color;
@@ -42,7 +44,7 @@ export class Circle implements Figure {
 
   constructor(color: Color, radius: number) {
     if (radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('Circle error: radius must be a positive number.');
     }
 
     this.color = color;
@@ -69,11 +71,13 @@ export class Triangle implements Figure {
 
   constructor(color: Color, a: number, b: number, c: number) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('your error message');
+      throw new Error('Triangle error: all sides must be positive numbers.');
     }
 
     if (a + b <= c || a + c <= b || b + c <= a) {
-      throw new Error('your error message');
+      throw new Error(
+        `Triangle error: sides ${a}, ${b}, ${c} cannot form a valid triangle (violates triangle inequality).`,
+      );
     }
 
     this.color = color;
